@@ -23,7 +23,16 @@
     <li>🔴 <b>Status `Takeout in Progress` (Darts werden gezogen):</b> Rot</li>
   </ul>
 
-  <hr>
+<hr>
+
+<h3>Was dieses Skript <u>NICHT</u> kann:</h3>
+<ul>
+<li>Keine Auswertung von Spielevents oder Scores.</li>
+<li>Es weiß nicht, was im Spiel passiert.</li>
+<li>Es verarbeitet ausschließlich den Board-Status: <code>throw</code> oder <code>takeout</code>.</li>
+</ul>
+
+<hr>
 
   <h3>Hardware:</h3>
   <ul>
@@ -73,7 +82,16 @@
     <li>🔴 <b>Status `Takeout in Progress` (Darts being removed):</b> Red</li>
   </ul>
 
-  <hr>
+<hr>
+
+<h3>What this script <u>CANNOT</u> do:</h3>
+<ul>
+<li>It does not analyze gameplay events or scores.</li>
+<li>It has no awareness of what happens in the game itself.</li>
+<li>It only tracks and processes whether the board is in <code>throw</code> or <code>takeout</code> state.</li>
+</ul>
+
+<hr>
 
   <h3>Hardware:</h3>
   <ul>
@@ -96,3 +114,4 @@
   sudo bash setup.sh
   </code></pre>
 </details>
+
