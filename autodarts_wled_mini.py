@@ -23,7 +23,7 @@ WLED_STATUS_CONFIG = {
     # Status: Spieler ist am Zug, bereit zu werfen
     "Throw": {
         "on": True, "bri": 255, "tt": 0,
-        "seg": {"fx": 0, "col": [[0, 0, 255]]}  # Blau
+        "seg": {"fx": 0, "col": [[0, 255, 0]]}  # Grün
     },
     
     # Status: Darts werden aus dem Board gezogen
@@ -35,7 +35,7 @@ WLED_STATUS_CONFIG = {
     # Status: Zug beendet, Darts wurden entfernt
     "Takeout": {
         "on": True, "bri": 255, "tt": 0,
-        "seg": {"fx": 0, "col": [[255, 165, 0]]}  # Orange
+        "seg": {"fx": 0, "col": [[255, 0, 0]]}  # Rot
     },
 
     # Status: System wird gestartet
@@ -170,4 +170,5 @@ if __name__ == "__main__":
         if ser and ser.is_open:
             send_wled_command({"on": False, "tt": 0})
             ser.close()
+
             print("--> Serielle Verbindung geschlossen.")
