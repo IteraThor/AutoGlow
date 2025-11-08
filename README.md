@@ -24,23 +24,16 @@ AutoGlow ist ein einfaches, lokales Skript, das den Echtzeit-Status deines Autod
 
 ---
 
-### Installation & Nutzung
+### Installation & Autostart (Ein Befehl)
 
-**1. Download & Installation**
-
-Öffnen Sie ein Terminal und führen Sie diese drei Befehle aus:
-
+Öffne ein Terminal, kopiere die folgenden drei Befehle und führe sie nacheinander aus. Das Skript richtet alles ein, inklusive des automatischen Starts beim System-Boot.
 
 ```bash
-# 1. Git herunterladen falls noch nicht gemacht:
-sudo apt install git -y
-# 2. Projekt herunterladen
+# 1. Projekt herunterladen
 git clone https://github.com/IteraThor/AutoGlow.git
 
-# 3. In den Projektordner wechseln
+# 2. In den Projektordner wechseln
 cd AutoGlow
 
-# 4. Benötigte Bibliotheken installieren
-pip install -r requirements.txt
-
-
+# 3. Setup-Skript mit Admin-Rechten ausführen
+sudo bash setup.sh
