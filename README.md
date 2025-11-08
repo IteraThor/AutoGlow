@@ -30,7 +30,10 @@ AutoGlow ist ein einfaches, lokales Skript, das den Echtzeit-Status deines Autod
 
 Öffnen Sie ein Terminal und führen Sie diese drei Befehle aus:
 
+
 ```bash
+# 1. Git herunterladen falls noch nicht gemacht:
+sudo apt install git -y
 # 1. Projekt herunterladen
 git clone https://github.com/IteraThor/AutoGlow.git
 
@@ -39,3 +42,4 @@ cd AutoGlow
 
 # 3. Benötigte Bibliotheken installieren
 pip install -r requirements.txt
+
