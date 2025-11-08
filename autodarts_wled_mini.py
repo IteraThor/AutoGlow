@@ -29,13 +29,13 @@ WLED_STATUS_CONFIG = {
     # Status: Darts werden aus dem Board gezogen
     "Takeout in progress": {
         "on": True, "bri": 255, "tt": 0,
-        "seg": {"fx": 0, "col": [[255, 255, 0]]}  # Gelb
+        "seg": {"fx": 0, "col": [[255, 0, 0]]}  # Rot
     },
 
     # Status: Zug beendet, Darts wurden entfernt
     "Takeout": {
         "on": True, "bri": 255, "tt": 0,
-        "seg": {"fx": 0, "col": [[255, 0, 0]]}  # Rot
+        "seg": {"fx": 0, "col": [[255, 255, 0]]}  # Gelb
     },
 
     # Status: System wird gestartet
@@ -172,3 +172,4 @@ if __name__ == "__main__":
             ser.close()
 
             print("--> Serielle Verbindung geschlossen.")
+
