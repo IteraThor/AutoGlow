@@ -42,7 +42,7 @@
 
   <h3>Hardware:</h3>
   <ul>
-    <li>PC (Linux) mit Autodarts</li>
+    <li>PC mit Autodarts</li>
     <li>ESP32-Board mit WLED-Firmware</li>
     <li>LEDs und ein USB-Kabel</li>
   </ul>
@@ -101,7 +101,7 @@
 
   <h3>Hardware:</h3>
   <ul>
-    <li>PC (Linux) with Autodarts</li>
+    <li>PC with Autodarts</li>
     <li>ESP32 board running WLED firmware</li>
     <li>LEDs and a USB cable</li>
   </ul>
@@ -120,6 +120,7 @@
   sudo bash setup.sh
   </code></pre>
 </details>
+
 
 
 
