@@ -7,11 +7,6 @@
 <!-- Sprachumschalter für README -->
 <details>
   <summary>🇩🇪 <strong>Deutsch</strong> (Klicken zum Ausklappen)</summary>
-
-
-<!-- Sprachumschalter für README -->
-<details>
-  <summary>🇩🇪 <strong>Deutsch</strong> (Klicken zum Ausklappen)</summary>
   
   <br>
   
@@ -125,6 +120,7 @@
   sudo bash setup.sh
   </code></pre>
 </details>
+
 
 
 
