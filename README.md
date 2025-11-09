@@ -1,3 +1,14 @@
+<p align="center">
+  <a href="https://discord.gg/pZAjmwV5kE">
+    <img src="https://img.shields.io/discord/DEINSERVERID?color=5865F2&logo=discord&logoColor=white&label=Discord&style=for-the-badge" alt="Join my Discord">
+  </a>
+</p>
+
+<!-- Sprachumschalter für README -->
+<details>
+  <summary>🇩🇪 <strong>Deutsch</strong> (Klicken zum Ausklappen)</summary>
+
+
 <!-- Sprachumschalter für README -->
 <details>
   <summary>🇩🇪 <strong>Deutsch</strong> (Klicken zum Ausklappen)</summary>
@@ -114,4 +125,5 @@
   sudo bash setup.sh
   </code></pre>
 </details>
+
 
