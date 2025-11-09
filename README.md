@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://discord.gg/pZAjmwV5kE">
-    <img src="https://img.shields.io/discord/DEINSERVERID?color=5865F2&logo=discord&logoColor=white&label=Discord&style=for-the-badge" alt="Join my Discord">
+    <img src="https://img.shields.io/discord/1353793423252914180?color=5865F2&logo=discord&logoColor=white&label=Discord&style=for-the-badge" alt="Join my Discord">
   </a>
 </p>
 
@@ -125,5 +125,6 @@
   sudo bash setup.sh
   </code></pre>
 </details>
+
 
 
