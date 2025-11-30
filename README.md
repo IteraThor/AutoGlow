@@ -1,3 +1,6 @@
+
+![Uploading Timeline 1.webp…]()
+
 <p align="center">
   <a href="https://discord.gg/pZAjmwV5kE">
     <img src="https://img.shields.io/badge/Join%20our%20Discord-5865F2?logo=discord&logoColor=white&style=for-the-badge" alt="Join our Discord">
@@ -120,6 +123,7 @@
   sudo bash setup.sh
   </code></pre>
 </details>
+
 
 
 
