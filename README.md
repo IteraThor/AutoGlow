@@ -1,5 +1,4 @@
-
-![Uploading Timeline 1.webp…]()
+![Timeline 1](https://github.com/user-attachments/assets/cdc61599-3691-4550-8449-7ac5020355ab)
 
 <p align="center">
   <a href="https://discord.gg/pZAjmwV5kE">
@@ -123,6 +122,7 @@
   sudo bash setup.sh
   </code></pre>
 </details>
+
 
 
 
