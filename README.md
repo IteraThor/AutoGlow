@@ -1,4 +1,5 @@
-![Timeline 1](https://github.com/user-attachments/assets/1e70248d-12c0-4678-aa3c-0b7e39fb5f7a)
+
+[Timeline_1.webm](https://github.com/user-attachments/assets/b55219f3-77fe-43d2-a55a-753f5056551b)
 
 <p align="center">
   <a href="https://discord.gg/pZAjmwV5kE">
@@ -122,6 +123,7 @@
   sudo bash setup.sh
   </code></pre>
 </details>
+
 
 
 
