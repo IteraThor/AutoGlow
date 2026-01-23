@@ -55,7 +55,6 @@
   <h3>Installation & Autostart (Ein Befehl)</h3>
 
   <pre><code># 1. Projekt herunterladen
-  sudo apt install python3.12-venv
   git clone https://github.com/IteraThor/AutoGlow.git
 
   # 2. In den Projektordner wechseln
@@ -115,7 +114,6 @@
   <h3>Installation & Autostart (One Command)</h3>
 
   <pre><code># 1. Clone the project
-  sudo apt install python3.12-venv
   git clone https://github.com/IteraThor/AutoGlow.git
 
   # 2. Enter the project folder
@@ -125,6 +123,7 @@
   sudo bash setup.sh
   </code></pre>
 </details>
+
 
 
 
