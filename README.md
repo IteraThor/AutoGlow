@@ -54,13 +54,14 @@
 
   <h3>Installation & Autostart (Ein Befehl)</h3>
 
-  <pre><code># 1. Projekt herunterladen
+  <pre><code>
+  # 1. Python Installieren
+  sudo apt-get install python3
+  # 2. Projekt herunterladen
   git clone https://github.com/IteraThor/AutoGlow.git
-
-  # 2. In den Projektordner wechseln
+  # 3. In den Projektordner wechseln
   cd AutoGlow
-
-  # 3. Setup-Skript mit Admin-Rechten ausführen
+  # 4. Setup-Skript mit Admin-Rechten ausführen
   sudo bash setup.sh
   </code></pre>
 </details>
@@ -113,16 +114,18 @@
 
   <h3>Installation & Autostart (One Command)</h3>
 
-  <pre><code># 1. Clone the project
+  <pre><code>
+  # 1. Install Python
+  sudo apt-get install python3
+  # 2. Clone the project
   git clone https://github.com/IteraThor/AutoGlow.git
-
-  # 2. Enter the project folder
+  # 3. Enter the project folder
   cd AutoGlow
-
-  # 3. Run setup script with admin privileges
+  # 4. Run setup script with admin privileges
   sudo bash setup.sh
   </code></pre>
 </details>
+
 
 
 
