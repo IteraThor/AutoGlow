@@ -91,7 +91,6 @@ class AutoGlowGUI:
         hex_col = self.color_btns[status].cget("bg").lstrip('#')
         rgb = [int(hex_col[i:i+2], 16) for i in (0, 2, 4)]
         
-        # Nutzt den aktuellen Slider-Wert für den Test
         brightness = self.bright_slider.get()
         command = {"on": True, "bri": brightness, "seg": {"fx": fx_id, "col": [rgb]}}
         
