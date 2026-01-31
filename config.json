@@ -72,7 +72,7 @@
             ]
         }
     },
-    "error": {
+    "Error": {
         "on": true,
         "bri": 255,
         "tt": 0,
