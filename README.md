@@ -44,7 +44,7 @@
 sudo systemctl stop autoglow.service
 
 # 2. Start the settings GUI
-python3 settings_gui.py
+sudo python3 settings_gui.py
 
 # 3. Restart the service after saving
 sudo systemctl start autoglow.service
@@ -104,7 +104,7 @@ sudo systemctl start autoglow.service
 sudo systemctl stop autoglow.service
 
 # 2. Einstellungen starten
-python3 settings_gui.py
+sudo python3 settings_gui.py
 
 # 3. Nach dem Speichern Dienst wieder starten
 sudo systemctl start autoglow.service
@@ -123,3 +123,4 @@ sudo systemctl start autoglow.service
   sudo bash setup.sh
   </code></pre>
 </details>
+
