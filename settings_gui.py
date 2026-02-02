@@ -6,7 +6,10 @@ import serial
 import serial.tools.list_ports
 import time
 
-CONFIG_FILE = "config.json"
+# --- FIX: Pfad relativ zum Skript-Verzeichnis setzen ---
+# Das verhindert Fehler, wenn das Skript von woanders (z.B. SUIT) aufgerufen wird.
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+CONFIG_FILE = os.path.join(BASE_DIR, "config.json")
 
 WLED_EFFECTS = {
     "Solid": 0, "Blink": 1, "Breathe": 2, "Wipe": 3, "Scan": 45,
@@ -17,6 +20,7 @@ WLED_EFFECTS = {
 EFFECT_ID_TO_NAME = {v: k for k, v in WLED_EFFECTS.items()}
 
 def load_config():
+    # Wir nutzen jetzt den absoluten Pfad CONFIG_FILE
     if not os.path.exists(CONFIG_FILE) or os.path.getsize(CONFIG_FILE) == 0:
         return {}
     with open(CONFIG_FILE, "r") as f:
@@ -69,7 +73,13 @@ class AutoGlowGUI:
 
             tk.Button(row, text="⚡", bg="#444444", fg="white", width=3, command=lambda s=status: self.test_effect(s)).pack(side="right", padx=5)
 
-            col = settings.get("seg", {}).get("col", [[255, 255, 255]])[0]
+            # Farbe sicher abrufen (Fallback auf Weiß)
+            col_data = settings.get("seg", {}).get("col", [[255, 255, 255]])
+            if not col_data or not isinstance(col_data, list):
+                col = [255, 255, 255]
+            else:
+                col = col_data[0]
+
             hex_color = f'#{col[0]:02x}{col[1]:02x}{col[2]:02x}'
             btn = tk.Button(row, bg=hex_color, width=3)
             btn.config(command=lambda s=status, b=btn: self.pick_color(s, b))
@@ -101,8 +111,9 @@ class AutoGlowGUI:
         except: pass
 
     def pick_color(self, status, btn):
-        color = colorchooser.askcolor(initialcolor=btn.cget("bg"))[1]
-        if color: btn.config(bg=color)
+        color_res = colorchooser.askcolor(initialcolor=btn.cget("bg"))
+        if color_res and color_res[1]: # Sicherstellen, dass eine Farbe gewählt wurde
+            btn.config(bg=color_res[1])
 
     def save(self):
         new_config = {"global_brightness": self.bright_slider.get()}
@@ -114,6 +125,7 @@ class AutoGlowGUI:
                 "on": True, "bri": 255, "tt": 0, "enabled": var.get(),
                 "seg": {"fx": WLED_EFFECTS.get(fx_name, 0), "col": [rgb]}
             }
+        # Auch hier nutzen wir den absoluten Pfad
         with open(CONFIG_FILE, "w") as f:
             json.dump(new_config, f, indent=4)
         messagebox.showinfo("Success", "Settings saved!")
