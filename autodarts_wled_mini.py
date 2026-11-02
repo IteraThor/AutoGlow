@@ -6,6 +6,9 @@ import serial.tools.list_ports
 import time
 import os
 import logging
+import urllib.request
+
+STATE_URL = "http://localhost:3180/api/state"
 
 # =============================================================================
 # LOGGING & CONFIGURATION
@@ -75,19 +78,51 @@ def send_wled_command(command_dict):
             logger.error(f"Serial write error: {e}")
             ser.close()
 
+def _norm(name):
+    return str(name).strip().lower().replace("_", " ").replace("-", " ")
+
+def resolve_status_key(config, status):
+    """Map a status from Autodarts (any casing, e.g. 'takeout in progress',
+    'Takeout_In_Progress') to the matching config key ('Takeout in progress')."""
+    if status in config:
+        return status
+    wanted = _norm(status)
+    for key, val in config.items():
+        if isinstance(val, dict) and _norm(key) == wanted:
+            return key
+    return None
+
+def extract_status(data):
+    """Pull the board status out of an Autodarts event, old or new format."""
+    if not isinstance(data, dict):
+        return None
+    inner = data.get("data")
+    if isinstance(inner, dict) and inner.get("status"):
+        return inner["status"]
+    if data.get("status"):
+        return data["status"]
+    return None
+
+_last_status = None
+
 async def handle_status_change(status):
+    global _last_status
     config = load_config()
-    status_config = config.get(status)
+    key = resolve_status_key(config, status)
+    status_config = config.get(key) if key else None
     global_bri = config.get("global_brightness", 255)
-    
+
     if status_config and status_config.get("enabled", True):
-        logger.info(f"Status change: {status} (Bri: {global_bri})")
+        if key == _last_status:
+            return
+        _last_status = key
+        logger.info(f"Status change: {key} (Bri: {global_bri})")
         command = status_config.copy()
         command.pop("enabled", None)
         command["bri"] = global_bri
         send_wled_command(command)
     else:
-        logger.debug(f"Status '{status}' is disabled or unconfigured.")
+        logger.info(f"Status '{status}' is disabled or not in config.json.")
 
 async def play_startup_animation():
     """Plays a short rainbow effect on startup for 3 seconds."""
@@ -97,8 +132,27 @@ async def play_startup_animation():
     await asyncio.sleep(3)
     await handle_status_change("Throw")
 
+def _fetch_state():
+    with urllib.request.urlopen(STATE_URL, timeout=2) as r:
+        return json.loads(r.read().decode())
+
+async def poll_state():
+    """Fallback: newer Autodarts versions don't always push status changes
+    over the websocket, so poll the REST state as well."""
+    loop = asyncio.get_running_loop()
+    while True:
+        try:
+            state = await loop.run_in_executor(None, _fetch_state)
+            status = extract_status(state)
+            if status:
+                await handle_status_change(status)
+        except Exception as e:
+            logger.debug(f"State poll failed: {e}")
+        await asyncio.sleep(1)
+
 async def autodarts_logger():
     uri = "ws://localhost:3180/api/events"
+    asyncio.create_task(poll_state())
     global ser
     esp_port = find_esp32_port()
     
@@ -117,10 +171,16 @@ async def autodarts_logger():
                 logger.info(f"Connected to Autodarts at {uri}")
                 while True:
                     message = await websocket.recv()
-                    data = json.loads(message)
-                    if data.get("type") == "state" and "status" in data.get("data", {}):
-                        status = data["data"]["status"]
+                    try:
+                        data = json.loads(message)
+                    except ValueError:
+                        logger.debug(f"Non-JSON message: {message[:200]}")
+                        continue
+                    status = extract_status(data)
+                    if status:
                         await handle_status_change(status)
+                    else:
+                        logger.debug(f"Ignored event: {message[:300]}")
         except Exception as e:
             logger.warning(f"WebSocket connection failed: {e}. Retrying in 5s...")
             await asyncio.sleep(5)
