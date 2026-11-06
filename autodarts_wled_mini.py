@@ -79,11 +79,11 @@ def send_wled_command(command_dict):
             ser.close()
 
 def _norm(name):
-    return str(name).strip().lower().replace("_", " ").replace("-", " ")
+    return "".join(ch for ch in str(name).lower() if ch.isalnum())
 
 def resolve_status_key(config, status):
     """Map a status from Autodarts (any casing, e.g. 'takeout in progress',
-    'Takeout_In_Progress') to the matching config key ('Takeout in progress')."""
+    'TakeoutInProgress') to the matching config key ('Takeout in progress')."""
     if status in config:
         return status
     wanted = _norm(status)
